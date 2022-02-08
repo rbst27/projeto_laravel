@@ -5,23 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cliente extends Model
+class Pedido extends Model
 {
     use HasFactory;
 
-    protected $table = 'clientes';
-
     protected $fillable = [
         'id',
-        'nome',
-        'email',
-        'cpf' 
+        'id_cliente',
+        'valor'
     ];
-   
 
-    public function pedidos()
+    public function vendas()
     {
-        return $this->hasMany('\App\Models\Pedido');
+        return $this->belongsToMany('\App\Models\Venda','venda_cliente')->withPivot('id_pedido','id_venda');
     }
 
 }

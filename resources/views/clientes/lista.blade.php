@@ -64,8 +64,8 @@
             <ul>
                 <li>Produtos
                     <ul>
-                        <li>Cadastrar<li>
-                        <li>Listar</li>
+                    <a href="/produto-cadastrar"> <li>Cadastrar<li></a>
+                    <a href="/listar-produtos">   <li>Listar</li></a>
                     </ul>    
                 </li>
                 <li>Clientes
@@ -76,8 +76,8 @@
                 </li>
                 <li>Pedidos
                    <ul>
-                        <li>Cadastrar<li>
-                        <li>Listar</li>
+                        <a href="/pedido-cadastrar"> <li>Cadastrar<li></a>
+                        <a href=" /listar-pedidos">   <li>Listar</li></a>
                    </ul>     
                 </li>
             <ul>    
@@ -95,10 +95,17 @@
             <tbody> 
           
             <?php
-               foreach($cliente as $clientes){
+
+           if(!empty($clientes)){
+               foreach($clientes as $cliente){
                
-                echo "<tr><th scope='col'>" . $clientes["nome"] . "</th><th scope='col'>" . $clientes["email"] . "</th> <th scope='col'>". $clientes["cpf"] . "</th><th><a href='/cliente-update/".$clientes["id"]."'>  Editar</a> <a href='/excluir-cliente/".$clientes["id"]."'>  Excluir</a></th></tr>";              ;
+                echo "<tr><th scope='col'>" . $cliente["nome"] . "</th><th scope='col'>" . $cliente["email"] . "</th> <th scope='col'>". $cliente["cpf"] . "</th><th><a href='/cliente-update/".$cliente["id"]."'>  Editar</a> <a onClick=\"javascript: return confirm('Deseja excluir o cliente?');\" href='/excluir-cliente/".$cliente["id"]."'>  Excluir</a></th></tr>";              ;
               }
+
+            }else{
+
+                echo "<tr><th scope='col'>Nenhum cliente cadastrado </th><tr>";
+            }
 
             ?>
              </tbody>

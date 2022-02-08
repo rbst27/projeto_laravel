@@ -68,8 +68,8 @@
             <ul>
                 <li>Produtos
                     <ul>
-                        <li>Cadastrar<li>
-                        <li>Listar</li>
+                    <a href="/produto-cadastrar"> <li>Cadastrar<li></a>
+                    <a href="/listar-produtos">   <li>Listar</li></a>
                     </ul>    
                 </li>
                 <li>Clientes
@@ -80,8 +80,8 @@
                 </li>
                 <li>Pedidos
                    <ul>
-                        <li>Cadastrar<li>
-                        <li>Listar</li>
+                        <a href="/pedido-cadastrar"> <li>Cadastrar<li></a>
+                        <a href=" /listar-pedidos">   <li>Listar</li></a>
                    </ul>     
                 </li>
             <ul>    
@@ -100,15 +100,15 @@
 
            <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" value="{{empty($cliente)? '':$cliente->nome}}">
+                <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" value="{{empty($cliente)? '':$cliente->nome}}" required>
            </div> 
            <div class="form-group">
                 <label for="email">E-Mail</label>
-                <input type="text" id="email" name="email" class="form-control" placeholder="E-Mail" value="{{empty($cliente)? '':$cliente->email}}">
+                <input type="text" id="email" name="email"  class="form-control" placeholder="E-Mail" value="{{empty($cliente)? '':$cliente->email}}" required>
            </div>       
            <div class="form-group">
                  <label for="cpf">CPF</label>
-                 <input type="text" id="cpf" name="cpf" class="form-control" placeholder="cpf" value="{{empty($cliente)? '':$cliente->cpf}}">
+                 <input type="text" id="cpf" name="cpf" class="form-control" placeholder="cpf" value="{{empty($cliente)? '':$cliente->cpf}}" required>
            </div>    
 
            @if(empty($cliente))

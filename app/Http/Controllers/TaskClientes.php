@@ -17,7 +17,7 @@ class TaskClientes extends Controller
     {
         $clientes =Cliente::All();
 
-        return view('clientes.lista', ['cliente'=>$clientes]);
+        return view('clientes.lista', ['clientes'=>$clientes]);
     }
 
     /**
@@ -44,21 +44,10 @@ class TaskClientes extends Controller
         $cliente["email"]=$body["email"];
         $cliente["cpf"]=$body["cpf"];
 
-      if(empty($cliente["nome"])){
-      
-        
-       
-      }elseif(empty($cliente["email"])){
-       
-       
-      }elseif(empty($cliente["cpf"])){     
-        
-
-
-      }else{
+    
           $cliente->save();
           return redirect('/cliente-cadastrar');
-      }
+     
           
     }
 
@@ -83,7 +72,6 @@ class TaskClientes extends Controller
     {
         $cliente = Cliente::find($id);
         return view('clientes.cadastrar', ['cliente'=>$cliente]);
-
 
     }
 
@@ -112,11 +100,16 @@ class TaskClientes extends Controller
      */
     public function destroy($id)
     {
-        
-        $cliente = Cliente::find($id);
-        $cliente->delete();
-        $clientes =Cliente::All();
-        return view('clientes.lista', ['cliente'=>$clientes]);
+             
+
+            $cliente = Cliente::find($id);
+            $cliente->delete();
+            $clientes =Cliente::All();
+            
+            return redirect('/listar-clientes');
+                  
+       
+     
 
     }
 }
